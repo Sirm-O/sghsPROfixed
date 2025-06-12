@@ -1,0 +1,43 @@
+{
+  "title": "Faculty & Staff",
+  "description": "Meet our dedicated team of educators and staff members.",
+  "principal": {
+    "name": "Dr. Priya Sharma",
+    "photo": "/images/uploads/principal.jpg",
+    "message": "Welcome to Sengani Girls School. Our dedicated faculty and staff are committed to providing quality education and nurturing the potential of every student. We believe in creating an environment where young women can grow academically, socially, and personally.",
+    "qualifications": "Ph.D. in Education, M.Ed., B.Ed."
+  },
+  "departments": [
+    {
+      "name": "Mathematics",
+      "description": "Developing analytical thinking and problem-solving skills through comprehensive mathematical education.",
+      "hod": "Mr. Rajesh Kumar"
+    },
+    {
+      "name": "Science",
+      "description": "Fostering scientific inquiry and research through hands-on experiments and theoretical knowledge.",
+      "hod": "Dr. Meera Nair"
+    },
+    {
+      "name": "English",
+      "description": "Enhancing communication skills and literary appreciation through language and literature.",
+      "hod": "Ms. Sunita Reddy"
+    },
+    {
+      "name": "Tamil",
+      "description": "Preserving cultural heritage and developing proficiency in our mother tongue.",
+      "hod": "Mrs. Kamala Devi"
+    },
+    {
+      "name": "Social Studies",
+      "description": "Understanding society, history, and civic responsibilities for informed citizenship.",
+      "hod": "Mr. Arjun Patel"
+    },
+    {
+      "name": "Arts & Crafts",
+      "description": "Encouraging creativity and artistic expression through various art forms.",
+      "hod": "Ms. Lakshmi Iyer"
+    }
+  ]
+}
+

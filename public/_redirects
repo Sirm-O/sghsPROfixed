@@ -1,0 +1,6 @@
+# Redirect /admin to /admin/index.html for CMS access
+/admin/* /admin/index.html 200
+
+# Handle React Router routes
+/* /index.html 200
+
