@@ -49,28 +49,28 @@ const ContactPage = () => {
     title: "Contact Us",
     description: "Get in touch with us for admissions, inquiries, or any other information.",
     contact_info: {
-      phone: "+91 98765 43210",
-      email: "info@senganigirlsschool.edu",
-      address: "Sengani Village, Dharmapuri District, Tamil Nadu 636807",
-      office_hours: "Monday - Friday: 9:00 AM - 4:00 PM"
+      phone: "+254 723 324518",
+      email: "senganigirlsschool@gmail.com",
+      address: "Sengani Village, Matungulu Subcounty, Machakos, Tala",
+      office_hours: "Monday - Friday: 8:00 AM - 5:00 PM"
     },
     departments: [
       {
         name: "Admissions Office",
-        phone: "+91 98765 43211",
-        email: "admissions@senganigirlsschool.edu",
+        phone: "+254 723 324518",
+        email: "senganigirlsschool@gmail.com",
         hours: "9:00 AM - 3:00 PM"
       },
       {
         name: "Principal's Office",
-        phone: "+91 98765 43212",
-        email: "principal@senganigirlsschool.edu",
+        phone: "+254 723 324518",
+        email: "senganigirlsschool@gmail.com",
         hours: "10:00 AM - 2:00 PM"
       },
       {
         name: "Academic Office",
-        phone: "+91 98765 43213",
-        email: "academics@senganigirlsschool.edu",
+        phone: "+254 723 324518",
+        email: "senganigirlsschool@gmail.com",
         hours: "9:00 AM - 4:00 PM"
       }
     ]
