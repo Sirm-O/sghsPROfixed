@@ -19,7 +19,7 @@ const HomePage = () => {
   // Default content if CMS data isn't available
   const defaultContent = {
     hero: {
-      title: "Welcome to Sengani Girls School",
+      title: "Welcome to SENGANI GIRLS SCHOOL",
       subtitle: "Empowering young women through quality education and holistic development",
       cta: "Learn More"
     },
@@ -52,12 +52,12 @@ const HomePage = () => {
     testimonials: [
       {
         quote: "Sengani Girls School provided me with the foundation I needed to succeed in life. The teachers are dedicated and the environment is truly nurturing.",
-        author: "Priya Sharma",
-        role: "Alumni, Class of 2020"
+        author: "Fyza Wangari",
+        role: "Alumni, Class of 2024"
       },
       {
         quote: "My daughter has grown tremendously since joining this school. The focus on both academics and character development is exceptional.",
-        author: "Mrs. Lakshmi Devi",
+        author: "Mr. Nelson Mutuku",
         role: "Parent"
       }
     ]
