@@ -29,8 +29,8 @@ const NewsPage = () => {
   // Sample news data - this will be populated via CMS
   const sampleNews = [
     {
-      title: "Annual Day Celebration 2024",
-      date: "2024-12-10T10:00:00",
+      title: "Annual General meeting (AGM) 2025",
+      date: "2024-07-10T10:00:00",
       author: "Sengani Girls School",
       summary: "Our annual day celebration was a grand success with outstanding performances by students from all grades. The event showcased the diverse talents of our students.",
       body: "The annual day celebration showcased the talents of our students through various cultural programs, academic achievements, and sports accomplishments. Parents and guests were delighted by the performances. The event featured dance performances, musical presentations, drama, and recognition of academic achievers.",
@@ -40,10 +40,10 @@ const NewsPage = () => {
     },
     {
       title: "Science Fair Winners Announced",
-      date: "2024-12-08T14:00:00",
+      date: "2024-05-08T14:00:00",
       author: "Science Department",
-      summary: "Congratulations to all participants and winners of our inter-house science fair. The projects demonstrated exceptional creativity and scientific understanding.",
-      body: "The science fair demonstrated innovative projects by students across all grades. The winning projects will represent our school at the district level competition. Topics ranged from environmental science to robotics and renewable energy.",
+      summary: "Congratulations to all participants and winners of the national Kenya Science and Engineering Fair (KSEF). The projects demonstrated exceptional creativity and scientific understanding.",
+      body: "The Kenya Science and Engineering Fair-National Exhibitions was helt at Kangaru School-Embu from 6th to 12 th April. Sengani Girls School presented Three projects in different categories. Engineering, Environmental Science and Energy & Transport. The projects performed so well at the national Platform. Juliet Kimani and Vanessa Michael with their Energy transport voted the MOst Innovative Project in Eastern Region. Getrude Kwamboka ans Tracy Kasiva, who presented their project-AUTOMATIC TEA DISPENSER emerged Position 2 Nationwide and Top position in Eastern Region. This performancce has propelled the school to highest levels in science and engineering. We sicerely thank the Parents to the students, Sengaani community at large for their support",
       category: "Academic Updates",
       featured: false,
       image: "/images/uploads/science-fair.jpg"
@@ -61,11 +61,11 @@ const NewsPage = () => {
       title: "Sports Day Achievements",
       date: "2024-11-28T16:00:00",
       author: "Sports Department",
-      summary: "Our students excelled in the annual sports day, breaking several school records and demonstrating exceptional athletic abilities.",
-      body: "The annual sports day was filled with excitement as students participated in various track and field events. Several school records were broken, and the spirit of healthy competition was evident throughout the day.",
+      summary: "Our students excelled in the Zonal Sports, breaking several school records and demonstrating exceptional Football, netball and Volleyball..",
+      body: "The Zonal games were held on 12th and 13th June, 2025 at Kisukioni Boys. Out teams scooped every event in that competition. all the teams are proceeding to compete at the Sub-County games which are scheduled fo be held at Tala High School from Thursday 19th to Friday 20th. We are still very hopeful for victory.",
       category: "Achievements",
       featured: true,
-      image: "/images/uploads/sports-day.jpg"
+      image: "/images/uploads/sports1.jpg"
     },
     {
       title: "Parent-Teacher Meeting Schedule",
