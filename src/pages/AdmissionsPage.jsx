@@ -230,7 +230,7 @@ const AdmissionsPage = () => {
               <div className="space-y-3">
                 <div className="flex items-center text-gray-300">
                   <Phone className="w-5 h-5 text-yellow-400 mr-3" />
-                  <span>+91 98765 43210</span>
+                  <span>254 723 324518</span>
                 </div>
                 <div className="flex items-center text-gray-300">
                   <FileText className="w-5 h-5 text-yellow-400 mr-3" />
@@ -238,7 +238,7 @@ const AdmissionsPage = () => {
                 </div>
                 <div className="flex items-start text-gray-300">
                   <MapPin className="w-5 h-5 text-yellow-400 mr-3 mt-1" />
-                  <span>Sengani Village, Dharmapuri District, Tamil Nadu 636807</span>
+                  <span>Sengani Village, Matungulu Sub-County; Machakos, Tala 70-90131</span>
                 </div>
               </div>
             </div>
