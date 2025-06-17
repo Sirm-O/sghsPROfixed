@@ -46,7 +46,7 @@ const NewsPage = () => {
       body: "The Kenya Science and Engineering Fair-National Exhibitions was helt at Kangaru School-Embu from 6th to 12 th April. Sengani Girls School presented Three projects in different categories. Engineering, Environmental Science and Energy & Transport. The projects performed so well at the national Platform. Juliet Kimani and Vanessa Michael with their Energy transport voted the MOst Innovative Project in Eastern Region. Getrude Kwamboka ans Tracy Kasiva, who presented their project-AUTOMATIC TEA DISPENSER emerged Position 2 Nationwide and Top position in Eastern Region. This performancce has propelled the school to highest levels in science and engineering. We sicerely thank the Parents to the students, Sengaani community at large for their support",
       category: "Academic Updates",
       featured: false,
-      image: "/images/uploads/science-fair.jpg"
+      image: "/images/uploads/young-scientists-at-assembly.jpg"
     },
     {
       title: "New Library Books Added",
