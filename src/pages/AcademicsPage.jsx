@@ -26,40 +26,40 @@ const AcademicsPage = () => {
       subjects: [
         {
           name: "Mathematics",
-          description: "Advanced mathematical concepts and problem-solving skills",
-          grades: "6-12"
+          description: "General mathematics and Advanced mathematical concepts and problem-solving skills",
+          grades: "10-12"
         },
         {
           name: "Science",
           description: "Physics, Chemistry, and Biology with hands-on laboratory experience",
-          grades: "6-12"
+          grades: "10-12"
         },
         {
           name: "Languages",
-          description: "Tamil, English, and Hindi language and literature",
-          grades: "6-12"
+          description: "English, and Kiswahili language with literature and Fasihi",
+          grades: "10-12"
         },
         {
-          name: "Social Studies",
-          description: "History, Geography, Civics, and Economics",
-          grades: "6-12"
+          name: "Humanities",
+          description: "History, Geography, and Christian Religious Education (CRE)",
+          grades: "10-12"
         },
         {
           name: "Computer Science",
           description: "Programming, digital literacy, and technology skills",
-          grades: "8-12"
+          grades: "10-12"
         },
         {
-          name: "Arts & Crafts",
-          description: "Creative expression through various art forms",
-          grades: "6-12"
+          name: "Applied Sciences",
+          description: "Business Studies, Agriculture and Home Science",
+          grades: "10-12"
         }
       ]
     },
     programs: [
       {
-        title: "CBSE Curriculum",
-        description: "Following the Central Board of Secondary Education curriculum with modern teaching methodologies."
+        title: "CBE Curriculum and 8-4-4",
+        description: "Following the Ministry of Education curriculum with modern teaching methodologies."
       },
       {
         title: "Science Laboratory",
@@ -77,7 +77,7 @@ const AcademicsPage = () => {
     achievements: [
       {
         title: "Board Results",
-        description: "Consistently achieving 95%+ pass rates in Class 10 and 12 board examinations"
+        description: "Consistently achieving 95%+ pass rates in Form 4' KCSE examinations"
       },
       {
         title: "Academic Awards",
@@ -85,7 +85,7 @@ const AcademicsPage = () => {
       },
       {
         title: "Competitive Exams",
-        description: "Strong performance in JEE, NEET, and other competitive examinations"
+        description: "Strong performance in KCSE, and other competitive examinations"
       }
     ]
   };
