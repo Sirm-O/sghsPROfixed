@@ -2,7 +2,7 @@
   "title": "Faculty & Staff",
   "description": "Meet our dedicated team of educators and staff members.",
   "principal": {
-    "name": "Dr. Priya Sharma",
+    "name": "Dr. Margaret Mwendwa",
     "photo": "/images/uploads/principal.jpg",
     "message": "Welcome to Sengani Girls School. Our dedicated faculty and staff are committed to providing quality education and nurturing the potential of every student. We believe in creating an environment where young women can grow academically, socially, and personally.",
     "qualifications": "Ph.D. in Education, M.Ed., B.Ed."
@@ -11,32 +11,32 @@
     {
       "name": "Mathematics",
       "description": "Developing analytical thinking and problem-solving skills through comprehensive mathematical education.",
-      "hod": "Mr. Rajesh Kumar"
+      "hod": "Mr. Anthony Sammy Nzioki"
     },
     {
       "name": "Science",
       "description": "Fostering scientific inquiry and research through hands-on experiments and theoretical knowledge.",
-      "hod": "Dr. Meera Nair"
+      "hod": "Mr. Githinji Ndonye"
     },
     {
-      "name": "English",
+      "name": "Languages",
       "description": "Enhancing communication skills and literary appreciation through language and literature.",
-      "hod": "Ms. Sunita Reddy"
+      "hod": "Mrs. Mutua Caroline"
     },
     {
-      "name": "Tamil",
+      "name": "Applied Sciences",
       "description": "Preserving cultural heritage and developing proficiency in our mother tongue.",
-      "hod": "Mrs. Kamala Devi"
+      "hod": "Mr. bernard Onsarigo"
     },
     {
-      "name": "Social Studies",
+      "name": "Humanities",
       "description": "Understanding society, history, and civic responsibilities for informed citizenship.",
-      "hod": "Mr. Arjun Patel"
+      "hod": "Mrs. Kale Caroline"
     },
     {
-      "name": "Arts & Crafts",
+      "name": "Games, Arts & Crafts & Sports",
       "description": "Encouraging creativity and artistic expression through various art forms.",
-      "hod": "Ms. Lakshmi Iyer"
+      "hod": "Mr. Alex Nguku"
     }
   ]
 }
