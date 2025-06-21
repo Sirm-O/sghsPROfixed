@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
-import { Calendar, MapPin, Clock, Users, ChevronRight, Tag, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Calendar, MapPin, Clock, Users, Tag, ChevronRight, Download, X, Eye } from 'lucide-react';
 import useCMSContent from '../lib/useCMSContent';
 
 const EventsPage = () => {
   const { content: pageContent, loading: pageLoading } = useCMSContent('/content/pages/events.json');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedEvent, setSelectedEvent] = useState(null);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (pageLoading) {
     return (
@@ -16,6 +22,17 @@ const EventsPage = () => {
       </div>
     );
   }
+
+  // FIXED: Read More functionality for events
+  const handleReadMore = (event) => {
+    setSelectedEvent(event);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleCloseEvent = () => {
+    setSelectedEvent(null);
+    document.body.style.overflow = 'unset';
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -34,78 +51,80 @@ const EventsPage = () => {
     });
   };
 
-  const isUpcoming = (dateString) => {
-    return new Date(dateString) > new Date();
+  const isEventPast = (dateString) => {
+    return new Date(dateString) < new Date();
   };
 
-  // Sample events data - this will be populated via CMS
+  // Sample events data
   const sampleEvents = [
     {
       title: "Winter Break",
-      date: "2024-12-20T00:00:00",
-      end_date: "2025-01-05T00:00:00",
+      startDate: "2024-12-20T12:00:00",
+      endDate: "2025-01-05T12:00:00",
+      time: "12:00 AM",
       location: "School Campus",
       description: "Winter break for all students and staff. Classes will resume on January 6th, 2025.",
-      body: "The school will be closed for winter break. We wish all our students and families a wonderful holiday season. Classes will resume on January 6th, 2025 with the new semester.",
+      fullDescription: "The winter break provides students and staff with a well-deserved rest period. During this time, the school will be closed for regular classes. However, the library will remain open on weekdays from 10 AM to 4 PM for students who wish to study. The school office will operate with limited hours. Emergency contact numbers will be available for urgent matters. Classes will resume on January 6th, 2025, with the regular schedule.",
       category: "Academic",
-      image: "/images/uploads/winter-break.jpg",
-      registration: false,
       contact: "School Office",
-      contact_phone: "+91 98765 43210"
+      phone: "+91 98765 43210",
+      registrationRequired: false,
+      image: "/images/uploads/winter-break.jpg"
     },
     {
       title: "Science Exhibition",
-      date: "2025-01-15T09:00:00",
-      end_date: "2025-01-15T16:00:00",
+      startDate: "2025-01-15T09:00:00",
+      endDate: "2025-01-15T17:00:00",
+      time: "09:00 AM",
       location: "School Auditorium",
       description: "Annual science exhibition showcasing student projects and innovations.",
-      body: "Students from all grades will present their science projects. Parents and guests are invited to witness the creativity and scientific thinking of our students. Awards will be given for outstanding projects.",
+      fullDescription: "The annual science exhibition is a platform for students to showcase their scientific projects and innovations. Students from all grades will present their research work, experiments, and creative solutions to real-world problems. The exhibition will feature projects on topics ranging from environmental science to robotics and renewable energy. Judges from local colleges and research institutions will evaluate the projects. Prizes will be awarded in different categories. Parents and community members are invited to witness the scientific talents of our students.",
       category: "Academic",
-      image: "/images/uploads/science-exhibition.jpg",
-      registration: true,
-      registration_link: "/contact",
       contact: "Science Department",
-      contact_phone: "+91 98765 43213"
+      phone: "+91 98765 43213",
+      registrationRequired: true,
+      image: "/images/uploads/science-exhibition.jpg"
     },
     {
       title: "Republic Day Celebration",
-      date: "2025-01-26T08:00:00",
-      end_date: "2025-01-26T12:00:00",
+      startDate: "2025-01-26T08:00:00",
+      endDate: "2025-01-26T12:00:00",
+      time: "08:00 AM",
       location: "School Grounds",
       description: "Celebrating India's Republic Day with flag hoisting and cultural programs.",
-      body: "Join us for the Republic Day celebration featuring flag hoisting, patriotic songs, and cultural performances by our students. The event will highlight the importance of our constitution and democratic values.",
+      fullDescription: "Join us in celebrating India's 76th Republic Day with great enthusiasm and patriotic fervor. The celebration will begin with the flag hoisting ceremony followed by the national anthem. Students will present cultural programs including patriotic songs, dances, and speeches highlighting the significance of this important day. The event will also feature a march past by different houses and a display of tableaux representing various states of India. Light refreshments will be served to all attendees.",
       category: "Cultural",
-      image: "/images/uploads/republic-day.jpg",
-      registration: false,
       contact: "Cultural Committee",
-      contact_phone: "+91 98765 43210"
+      phone: "+91 98765 43210",
+      registrationRequired: false,
+      image: "/images/uploads/republic-day.jpg"
     },
     {
       title: "Inter-House Sports Competition",
-      date: "2025-02-10T08:00:00",
-      end_date: "2025-02-12T17:00:00",
+      startDate: "2025-02-10T08:00:00",
+      endDate: "2025-02-12T17:00:00",
+      time: "08:00 AM",
       location: "School Sports Ground",
       description: "Three-day inter-house sports competition featuring various athletic events.",
-      body: "The annual inter-house sports competition will feature track and field events, team sports, and individual competitions. Students will compete for their respective houses in a spirit of healthy competition.",
+      fullDescription: "The annual inter-house sports competition is a three-day extravaganza featuring various athletic events and team sports. Students will compete in track and field events, team sports like volleyball, basketball, and football, as well as individual competitions. Each house will participate with great enthusiasm to win the overall championship trophy. The competition promotes physical fitness, team spirit, and healthy competition among students. Medals and certificates will be awarded to winners and participants. Parents are welcome to cheer for their children.",
       category: "Sports",
-      image: "/images/uploads/sports-competition.jpg",
-      registration: true,
-      registration_link: "/contact",
       contact: "Sports Department",
-      contact_phone: "+91 98765 43214"
+      phone: "+91 98765 43214",
+      registrationRequired: true,
+      image: "/images/uploads/sports-competition.jpg"
     },
     {
       title: "Parent-Teacher Meeting",
-      date: "2025-02-20T10:00:00",
-      end_date: "2025-02-20T16:00:00",
+      startDate: "2025-02-20T10:00:00",
+      endDate: "2025-02-20T16:00:00",
+      time: "10:00 AM",
       location: "Individual Classrooms",
       description: "Quarterly parent-teacher meeting to discuss student progress.",
-      body: "Parents are invited to meet with teachers to discuss their child's academic progress, behavior, and development. Individual time slots will be allocated for meaningful discussions.",
+      fullDescription: "The quarterly parent-teacher meeting provides an excellent opportunity for parents to discuss their child's academic progress, behavior, and overall development with teachers. Individual time slots will be allocated to ensure meaningful one-on-one discussions. Teachers will share detailed feedback about each student's performance, strengths, and areas for improvement. Parents can also discuss any concerns or suggestions they may have. This collaborative approach helps in the holistic development of students.",
       category: "Academic",
-      registration: true,
-      registration_link: "/contact",
       contact: "Academic Office",
-      contact_phone: "+91 98765 43213"
+      phone: "+91 98765 43213",
+      registrationRequired: true
     }
   ];
 
@@ -115,9 +134,6 @@ const EventsPage = () => {
   const filteredEvents = selectedCategory === 'All' 
     ? events 
     : events.filter(event => event.category === selectedCategory);
-
-  const upcomingEvents = events.filter(event => isUpcoming(event.date));
-  const pastEvents = events.filter(event => !isUpcoming(event.date));
 
   return (
     <div className="section">
@@ -131,67 +147,6 @@ const EventsPage = () => {
             {pageContent?.description || "Stay informed about upcoming school events, activities, and important dates."}
           </p>
         </div>
-
-        {/* Upcoming Events Highlight */}
-        {upcomingEvents.length > 0 && (
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold text-white mb-8 text-center">
-              Upcoming Events
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {upcomingEvents.slice(0, 2).map((event, index) => (
-                <div key={index} className="card hover-scale border-l-4 border-yellow-400">
-                  {event.image && (
-                    <div className="mb-4 overflow-hidden rounded-lg">
-                      <img 
-                        src={event.image} 
-                        alt={event.title}
-                        className="w-full h-48 object-cover hover:scale-110 transition-transform duration-300"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                        }}
-                      />
-                    </div>
-                  )}
-                  <div className="flex items-center gap-4 mb-3 text-sm text-gray-400">
-                    <div className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {formatDate(event.date)}
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {formatTime(event.date)}
-                    </div>
-                    <span className="badge badge-success">
-                      Upcoming
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-3 hover:text-yellow-400 transition-colors">
-                    {event.title}
-                  </h3>
-                  <div className="flex items-center text-gray-300 mb-3">
-                    <MapPin className="w-4 h-4 mr-2 text-yellow-400" />
-                    <span className="text-sm">{event.location}</span>
-                  </div>
-                  <p className="text-gray-300 mb-4 line-clamp-3">
-                    {event.description}
-                  </p>
-                  {event.registration && (
-                    <div className="flex gap-2 mb-4">
-                      <button className="btn-primary text-sm">
-                        <Users className="w-4 h-4 mr-1" />
-                        Register Now
-                      </button>
-                    </div>
-                  )}
-                  <button className="flex items-center text-yellow-400 hover:text-yellow-300 transition-colors">
-                    View Details <ChevronRight className="w-4 h-4 ml-1" />
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Category Filter */}
         <div className="mb-8">
@@ -213,9 +168,9 @@ const EventsPage = () => {
         </div>
 
         {/* Events Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {filteredEvents.map((event, index) => (
-            <div key={index} className={`card hover-scale ${isUpcoming(event.date) ? 'border-l-4 border-green-400' : 'border-l-4 border-gray-400'}`}>
+            <div key={index} className="card hover-scale">
               {event.image && (
                 <div className="mb-4 overflow-hidden rounded-lg">
                   <img 
@@ -228,7 +183,7 @@ const EventsPage = () => {
                   />
                 </div>
               )}
-              
+
               <div className="flex items-center justify-between mb-3">
                 <span className={`badge ${
                   event.category === 'Academic' ? 'badge-primary' :
@@ -240,29 +195,33 @@ const EventsPage = () => {
                   <Tag className="w-3 h-3 mr-1 inline" />
                   {event.category}
                 </span>
-                <span className={`text-xs ${isUpcoming(event.date) ? 'text-green-400' : 'text-gray-400'}`}>
-                  {isUpcoming(event.date) ? 'Upcoming' : 'Past Event'}
+                <span className={`text-xs px-2 py-1 rounded ${
+                  isEventPast(event.endDate) 
+                    ? 'bg-gray-500/20 text-gray-400' 
+                    : 'bg-green-500/20 text-green-400'
+                }`}>
+                  {isEventPast(event.endDate) ? 'Past Event' : 'Upcoming'}
                 </span>
               </div>
 
-              <h3 className="text-lg font-bold text-white mb-2 hover:text-yellow-400 transition-colors line-clamp-2">
+              <h3 className="text-lg font-bold text-white mb-3 hover:text-yellow-400 transition-colors">
                 {event.title}
               </h3>
 
-              <div className="space-y-2 mb-3 text-xs text-gray-400">
+              <div className="space-y-2 mb-4 text-sm text-gray-300">
                 <div className="flex items-center">
-                  <Calendar className="w-3 h-3 mr-1" />
-                  {formatDate(event.date)}
-                  {event.end_date && event.end_date !== event.date && (
-                    <span> - {formatDate(event.end_date)}</span>
-                  )}
+                  <Calendar className="w-4 h-4 mr-2 text-yellow-400" />
+                  {event.startDate === event.endDate ? 
+                    formatDate(event.startDate) : 
+                    `${formatDate(event.startDate)} - ${formatDate(event.endDate)}`
+                  }
                 </div>
                 <div className="flex items-center">
-                  <Clock className="w-3 h-3 mr-1" />
-                  {formatTime(event.date)}
+                  <Clock className="w-4 h-4 mr-2 text-yellow-400" />
+                  {formatTime(event.startDate)}
                 </div>
                 <div className="flex items-center">
-                  <MapPin className="w-3 h-3 mr-1" />
+                  <MapPin className="w-4 h-4 mr-2 text-yellow-400" />
                   {event.location}
                 </div>
               </div>
@@ -271,22 +230,26 @@ const EventsPage = () => {
                 {event.description}
               </p>
 
-              <div className="flex flex-col gap-2">
-                {event.registration && isUpcoming(event.date) && (
-                  <button className="btn-primary text-sm">
-                    <Users className="w-4 h-4 mr-1" />
-                    Register
-                  </button>
+              <div className="flex items-center justify-between">
+                {/* FIXED: Read More Button */}
+                <button 
+                  onClick={() => handleReadMore(event)}
+                  className="flex items-center text-yellow-400 hover:text-yellow-300 transition-colors text-sm"
+                >
+                  <Eye className="w-4 h-4 mr-1" />
+                  Read More
+                </button>
+
+                {event.registrationRequired && (
+                  <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">
+                    Registration Required
+                  </span>
                 )}
-                
-                {event.contact && (
-                  <div className="text-xs text-gray-400">
-                    Contact: {event.contact}
-                    {event.contact_phone && (
-                      <span className="block">{event.contact_phone}</span>
-                    )}
-                  </div>
-                )}
+              </div>
+
+              <div className="mt-3 pt-3 border-t border-white/10 text-xs text-gray-400">
+                Contact: {event.contact}<br />
+                {event.phone}
               </div>
             </div>
           ))}
@@ -310,23 +273,19 @@ const EventsPage = () => {
           </div>
         )}
 
-        {/* Event Calendar Notice */}
-        <div className="mt-16">
-          <div className="card max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-white mb-4">
-              School Calendar
-            </h2>
-            <p className="text-gray-300 mb-6">
-              For a complete view of all school events and important dates, download our academic calendar.
-            </p>
-            <button className="btn-primary">
-              <Calendar className="w-4 h-4 mr-2" />
-              Download Calendar
-            </button>
-          </div>
+        {/* School Calendar Section */}
+        <div className="card text-center">
+          <h2 className="text-2xl font-bold text-white mb-4">School Calendar</h2>
+          <p className="text-gray-300 mb-6">
+            For a complete view of all school events and important dates, download our academic calendar.
+          </p>
+          <button className="btn-primary inline-flex items-center">
+            <Download className="w-4 h-4 mr-2" />
+            Download Calendar
+          </button>
         </div>
 
-        {/* Instructions for adding events */}
+        {/* Instructions */}
         <div className="mt-8 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
           <h4 className="text-blue-400 font-semibold mb-2">📅 How to Add Events</h4>
           <p className="text-gray-300 text-sm">
@@ -335,9 +294,122 @@ const EventsPage = () => {
           </p>
         </div>
       </div>
+
+      {/* FIXED: Event Details Modal */}
+      {selectedEvent && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-gradient-to-br from-purple-900/90 to-blue-900/90 backdrop-blur-md border border-white/20 rounded-xl max-w-4xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              {/* Close Button */}
+              <div className="flex justify-between items-start mb-4">
+                <span className={`badge ${
+                  selectedEvent.category === 'Academic' ? 'badge-primary' :
+                  selectedEvent.category === 'Cultural' ? 'badge-secondary' :
+                  selectedEvent.category === 'Sports' ? 'badge-success' :
+                  selectedEvent.category === 'Social' ? 'badge-info' :
+                  'badge-secondary'
+                }`}>
+                  {selectedEvent.category}
+                </span>
+                <button 
+                  onClick={handleCloseEvent}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Event Image */}
+              {selectedEvent.image && (
+                <div className="mb-6 overflow-hidden rounded-lg">
+                  <img 
+                    src={selectedEvent.image} 
+                    alt={selectedEvent.title}
+                    className="w-full h-64 object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+              )}
+
+              {/* Event Details */}
+              <h1 className="text-3xl font-bold text-white mb-4">
+                {selectedEvent.title}
+              </h1>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="space-y-3">
+                  <div className="flex items-center text-gray-300">
+                    <Calendar className="w-5 h-5 mr-3 text-yellow-400" />
+                    <div>
+                      <div className="font-semibold">Date</div>
+                      <div className="text-sm">
+                        {selectedEvent.startDate === selectedEvent.endDate ? 
+                          formatDate(selectedEvent.startDate) : 
+                          `${formatDate(selectedEvent.startDate)} - ${formatDate(selectedEvent.endDate)}`
+                        }
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center text-gray-300">
+                    <Clock className="w-5 h-5 mr-3 text-yellow-400" />
+                    <div>
+                      <div className="font-semibold">Time</div>
+                      <div className="text-sm">{formatTime(selectedEvent.startDate)}</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center text-gray-300">
+                    <MapPin className="w-5 h-5 mr-3 text-yellow-400" />
+                    <div>
+                      <div className="font-semibold">Location</div>
+                      <div className="text-sm">{selectedEvent.location}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center text-gray-300">
+                    <Users className="w-5 h-5 mr-3 text-yellow-400" />
+                    <div>
+                      <div className="font-semibold">Contact</div>
+                      <div className="text-sm">{selectedEvent.contact}</div>
+                      <div className="text-sm">{selectedEvent.phone}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {selectedEvent.registrationRequired && (
+                <div className="bg-blue-500/20 border border-blue-500/30 rounded-lg p-4 mb-6">
+                  <div className="flex items-center text-blue-400 mb-2">
+                    <Users className="w-5 h-5 mr-2" />
+                    <span className="font-semibold">Registration Required</span>
+                  </div>
+                  <p className="text-gray-300 text-sm">
+                    Please contact the organizer to register for this event.
+                  </p>
+                </div>
+              )}
+
+              <div className="text-gray-300 leading-relaxed whitespace-pre-line mb-6">
+                {selectedEvent.fullDescription || selectedEvent.description}
+              </div>
+
+              {/* Close Button at Bottom */}
+              <div className="text-center">
+                <button 
+                  onClick={handleCloseEvent}
+                  className="btn-primary"
+                >
+                  Close Event Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default EventsPage;
-
