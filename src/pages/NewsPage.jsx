@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
-import { Calendar, User, Tag, ChevronRight, Clock, Eye } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Calendar, User, Tag, ChevronRight, Clock, Eye, X } from 'lucide-react';
 import useCMSContent from '../lib/useCMSContent';
 
 const NewsPage = () => {
   const { content: pageContent, loading: pageLoading } = useCMSContent('/content/pages/news.json');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedArticle, setSelectedArticle] = useState(null);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (pageLoading) {
     return (
@@ -26,34 +32,45 @@ const NewsPage = () => {
     });
   };
 
-  // Sample news data - this will be populated via CMS
+  // FIXED: Read More functionality
+  const handleReadMore = (article) => {
+    setSelectedArticle(article);
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+  };
+
+  const handleCloseArticle = () => {
+    setSelectedArticle(null);
+    document.body.style.overflow = 'unset'; // Restore scroll
+  };
+
+  // Sample news data
   const sampleNews = [
     {
-      title: "Annual General meeting (AGM) 2025",
-      date: "2024-07-10T10:00:00",
+      title: "Annual Day Celebration 2024",
+      date: "2024-12-10T10:00:00",
       author: "Sengani Girls School",
       summary: "Our annual day celebration was a grand success with outstanding performances by students from all grades. The event showcased the diverse talents of our students.",
-      body: "The annual day celebration showcased the talents of our students through various cultural programs, academic achievements, and sports accomplishments. Parents and guests were delighted by the performances. The event featured dance performances, musical presentations, drama, and recognition of academic achievers.",
+      body: "The annual day celebration showcased the talents of our students through various cultural programs, academic achievements, and sports accomplishments. Parents and guests were delighted by the performances. The event featured dance performances, musical presentations, drama, and recognition of academic achievers. Students from all grades participated enthusiastically, making it a memorable evening for everyone. The chief guest praised the school's commitment to holistic education and the exceptional talents displayed by the students.",
       category: "Events",
       featured: true,
       image: "/images/uploads/annual-day.jpg"
     },
     {
       title: "Science Fair Winners Announced",
-      date: "2024-05-08T14:00:00",
+      date: "2024-12-08T14:00:00",
       author: "Science Department",
-      summary: "Congratulations to all participants and winners of the national Kenya Science and Engineering Fair (KSEF). The projects demonstrated exceptional creativity and scientific understanding.",
-      body: "The Kenya Science and Engineering Fair-National Exhibitions was helt at Kangaru School-Embu from 6th to 12 th April. Sengani Girls School presented Three projects in different categories. Engineering, Environmental Science and Energy & Transport. The projects performed so well at the national Platform. Juliet Kimani and Vanessa Michael with their Energy transport voted the MOst Innovative Project in Eastern Region. Getrude Kwamboka ans Tracy Kasiva, who presented their project-AUTOMATIC TEA DISPENSER emerged Position 2 Nationwide and Top position in Eastern Region. This performancce has propelled the school to highest levels in science and engineering. We sicerely thank the Parents to the students, Sengaani community at large for their support",
+      summary: "Congratulations to all participants and winners of our inter-house science fair. The projects demonstrated exceptional creativity and scientific understanding.",
+      body: "The science fair demonstrated innovative projects by students across all grades. The winning projects will represent our school at the district level competition. Topics ranged from environmental science to robotics and renewable energy. The first prize went to Class 10 students for their project on 'Solar Water Purification System'. The second prize was awarded for 'Smart Irrigation System using IoT'. All participants showed remarkable scientific temperament and creativity.",
       category: "Academic Updates",
       featured: false,
-      image: "/images/uploads/young-scientists-at-assembly.jpg"
+      image: "/images/uploads/science-fair.jpg"
     },
     {
       title: "New Library Books Added",
       date: "2024-12-05T09:00:00",
       author: "Library Department",
       summary: "Over 200 new books have been added to our school library collection, enriching our students' reading resources.",
-      body: "The library has been enriched with new fiction, non-fiction, and reference books to support student learning and reading habits. The collection includes latest publications in science, literature, and general knowledge.",
+      body: "The library has been enriched with new fiction, non-fiction, and reference books to support student learning and reading habits. The collection includes latest publications in science, literature, and general knowledge. Students can now access books on contemporary topics, classic literature, and academic references. The library also introduced a digital catalog system for easy book search and reservation.",
       category: "School News",
       featured: false
     },
@@ -61,18 +78,18 @@ const NewsPage = () => {
       title: "Sports Day Achievements",
       date: "2024-11-28T16:00:00",
       author: "Sports Department",
-      summary: "Our students excelled in the Zonal Sports, breaking several school records and demonstrating exceptional Football, netball and Volleyball..",
-      body: "The Zonal games were held on 12th and 13th June, 2025 at Kisukioni Boys. Out teams scooped every event in that competition. all the teams are proceeding to compete at the Sub-County games which are scheduled fo be held at Tala High School from Thursday 19th to Friday 20th. We are still very hopeful for victory.",
+      summary: "Our students excelled in the annual sports day, breaking several school records and demonstrating exceptional athletic abilities.",
+      body: "The annual sports day was filled with excitement as students participated in various track and field events. Several school records were broken, and the spirit of healthy competition was evident throughout the day. The 100m sprint record was broken by Priya from Class 11, while the long jump record was set by Meera from Class 10. The day concluded with a spectacular march past and prize distribution ceremony.",
       category: "Achievements",
       featured: true,
-      image: "/images/uploads/sports1.jpg"
+      image: "/images/uploads/sports-day.jpg"
     },
     {
       title: "Parent-Teacher Meeting Schedule",
       date: "2024-11-25T10:00:00",
       author: "Academic Office",
       summary: "The next parent-teacher meeting is scheduled for December 15th, 2024. All parents are requested to attend.",
-      body: "The parent-teacher meeting will provide an opportunity for parents to discuss their child's academic progress and development with teachers. Individual time slots will be allocated to ensure meaningful discussions.",
+      body: "The parent-teacher meeting will provide an opportunity for parents to discuss their child's academic progress and development with teachers. Individual time slots will be allocated to ensure meaningful discussions. Parents can book their preferred time slots through the school office. The meeting will cover academic performance, behavioral development, and future academic planning for each student.",
       category: "Announcements",
       featured: false
     }
@@ -140,7 +157,11 @@ const NewsPage = () => {
                   <p className="text-gray-300 mb-4 line-clamp-3">
                     {article.summary}
                   </p>
-                  <button className="flex items-center text-yellow-400 hover:text-yellow-300 transition-colors">
+                  {/* FIXED: Read More Button */}
+                  <button 
+                    onClick={() => handleReadMore(article)}
+                    className="flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
+                  >
                     Read More <ChevronRight className="w-4 h-4 ml-1" />
                   </button>
                 </div>
@@ -220,7 +241,11 @@ const NewsPage = () => {
                 {article.summary}
               </p>
 
-              <button className="flex items-center text-yellow-400 hover:text-yellow-300 transition-colors text-sm">
+              {/* FIXED: Read Full Article Button */}
+              <button 
+                onClick={() => handleReadMore(article)}
+                className="flex items-center text-yellow-400 hover:text-yellow-300 transition-colors text-sm"
+              >
                 <Eye className="w-4 h-4 mr-1" />
                 Read Full Article
               </button>
@@ -277,9 +302,83 @@ const NewsPage = () => {
           </p>
         </div>
       </div>
+
+      {/* FIXED: Article Modal */}
+      {selectedArticle && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-gradient-to-br from-purple-900/90 to-blue-900/90 backdrop-blur-md border border-white/20 rounded-xl max-w-4xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              {/* Close Button */}
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex items-center gap-4 text-sm text-gray-400">
+                  <div className="flex items-center">
+                    <Calendar className="w-4 h-4 mr-1" />
+                    {formatDate(selectedArticle.date)}
+                  </div>
+                  <div className="flex items-center">
+                    <User className="w-4 h-4 mr-1" />
+                    {selectedArticle.author}
+                  </div>
+                  <span className={`badge ${
+                    selectedArticle.category === 'School News' ? 'badge-secondary' :
+                    selectedArticle.category === 'Academic Updates' ? 'badge-success' :
+                    selectedArticle.category === 'Events' ? 'badge-info' :
+                    selectedArticle.category === 'Achievements' ? 'badge-primary' :
+                    'badge-secondary'
+                  }`}>
+                    {selectedArticle.category}
+                  </span>
+                </div>
+                <button 
+                  onClick={handleCloseArticle}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Article Image */}
+              {selectedArticle.image && (
+                <div className="mb-6 overflow-hidden rounded-lg">
+                  <img 
+                    src={selectedArticle.image} 
+                    alt={selectedArticle.title}
+                    className="w-full h-64 object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+              )}
+
+              {/* Article Content */}
+              <h1 className="text-3xl font-bold text-white mb-4">
+                {selectedArticle.title}
+              </h1>
+              
+              <p className="text-xl text-gray-300 mb-6 font-medium">
+                {selectedArticle.summary}
+              </p>
+              
+              <div className="text-gray-300 leading-relaxed whitespace-pre-line">
+                {selectedArticle.body}
+              </div>
+
+              {/* Close Button at Bottom */}
+              <div className="mt-8 text-center">
+                <button 
+                  onClick={handleCloseArticle}
+                  className="btn-primary"
+                >
+                  Close Article
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default NewsPage;
-
