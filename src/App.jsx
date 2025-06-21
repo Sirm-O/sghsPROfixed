@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -15,38 +15,40 @@ import FacultyPage from './pages/FacultyPage';
 import DownloadsPage from './pages/DownloadsPage';
 import './App.css';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Scroll to top whenever the route changes
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
-    <div className="min-h-screen">
-      {/* Animated background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="stars"></div>
-        <div className="twinkling"></div>
-      </div>
-      
-      {/* Main content */}
-      <div className="relative z-10">
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/academics" element={<AcademicsPage />} />
-            <Route path="/student-life" element={<StudentLifePage />} />
-            <Route path="/faculty" element={<FacultyPage />} />
-            <Route path="/admissions" element={<AdmissionsPage />} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/events" element={<EventsPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/downloads" element={<DownloadsPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+    <div className="App">
+      <ScrollToTop />
+      <Navbar />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/academics" element={<AcademicsPage />} />
+          <Route path="/student-life" element={<StudentLifePage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/admissions" element={<AdmissionsPage />} />
+          <Route path="/faculty" element={<FacultyPage />} />
+          <Route path="/downloads" element={<DownloadsPage />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }
 
 export default App;
-
