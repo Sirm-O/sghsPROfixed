@@ -215,21 +215,21 @@ const AboutPage = () => {
               <Phone className="w-5 h-5 text-yellow-400 mr-3" />
               <div>
                 <div className="text-white font-semibold">Phone</div>
-                <div className="text-gray-300">+91 98765 43210</div>
+                <div className="text-gray-300">+254 707 123456</div>
               </div>
             </div>
             <div className="flex items-center">
               <Mail className="w-5 h-5 text-yellow-400 mr-3" />
               <div>
                 <div className="text-white font-semibold">Email</div>
-                <div className="text-gray-300">info@senganigirlsschool.edu</div>
+                <div className="text-gray-300">senganigirlsschool@gmail.com</div>
               </div>
             </div>
             <div className="flex items-center md:col-span-2">
               <MapPin className="w-5 h-5 text-yellow-400 mr-3" />
               <div>
                 <div className="text-white font-semibold">Address</div>
-                <div className="text-gray-300">Sengani Village, Dharmapuri District, Tamil Nadu 636807</div>
+                <div className="text-gray-300">Sengani Village, Matungulu Sub-County, Machakos County-Kenya</div>
               </div>
             </div>
           </div>
