@@ -142,7 +142,7 @@ const HomePage = () => {
             <div className="text-gray-300 text-sm">Serving the community since 1985</div>
           </div>
           <div className="card">
-            <div className="text-4xl font-bold text-yellow-400 mb-2">500+</div>
+            <div className="text-4xl font-bold text-yellow-400 mb-2">900+</div>
             <div className="text-white font-semibold mb-2">Students</div>
             <div className="text-gray-300 text-sm">Currently enrolled across all grades</div>
           </div>
@@ -165,14 +165,14 @@ const HomePage = () => {
               <Phone className="w-5 h-5 text-yellow-400 mr-3" />
               <div>
                 <div className="text-white font-semibold">Phone</div>
-                <div className="text-gray-300">+91 98765 43210</div>
+                <div className="text-gray-300">+254 723 324518</div>
               </div>
             </div>
             <div className="flex items-center">
               <MapPin className="w-5 h-5 text-yellow-400 mr-3" />
               <div>
                 <div className="text-white font-semibold">Location</div>
-                <div className="text-gray-300">Sengani Village, Dharmapuri</div>
+                <div className="text-gray-300">Sengani Village, Machakos</div>
               </div>
             </div>
           </div>
