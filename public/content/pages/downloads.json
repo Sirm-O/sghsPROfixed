@@ -1,0 +1,42 @@
+{
+  "title": "Downloads",
+  "description": "Access important school documents, forms, and resources",
+  "categories": [
+    {
+      "name": "Fee Structure",
+      "documents": [
+        {
+          "title": "Fee Structure 2024-25",
+          "description": "Complete fee structure for academic year 2024-25",
+          "fileUrl": "/images/uploads/Opeations.pdf",
+          "fileSize": "2.5 MB",
+          "uploadDate": "2024-12-28"
+        }
+      ]
+    },
+    {
+      "name": "Newsletters",
+      "documents": [
+        {
+          "title": "January 2025 Newsletter",
+          "description": "Monthly newsletter with school updates and events",
+          "fileUrl": "/images/uploads/newsletter-january-2025.pdf",
+          "fileSize": "1.8 MB",
+          "uploadDate": "2025-01-01"
+        }
+      ]
+    },
+    {
+      "name": "Forms",
+      "documents": [
+        {
+          "title": "Admission Application Form",
+          "description": "Application form for new admissions",
+          "fileUrl": "/images/uploads/admission-form.pdf",
+          "fileSize": "500 KB",
+          "uploadDate": "2024-12-15"
+        }
+      ]
+    }
+  ]
+}
