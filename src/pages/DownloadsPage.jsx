@@ -53,7 +53,7 @@ const DownloadsPage = () => {
     {
       title: "Fee Structure 2024-25",
       date: "2024-12-01T10:00:00",
-      file: "/images/uploads/friday-invigilation-shedule.pdf",
+      file: "public/images/uploads/Opeations.pdf",
       description: "Complete fee structure for the academic year 2024-25 including all charges and payment schedules.",
       category: "Fee Structure",
       academic_year: "2024-25",
