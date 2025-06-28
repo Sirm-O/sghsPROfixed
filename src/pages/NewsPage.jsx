@@ -297,8 +297,8 @@ const NewsPage = () => {
         <div className="mt-8 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
           <h4 className="text-blue-400 font-semibold mb-2">📝 How to Add News Articles</h4>
           <p className="text-gray-300 text-sm">
-            {/* To add new news articles, create JSON files in the <code className="bg-black/30 px-1 rounded">public/content/news/</code> folder 
-            or use the CMS admin interface at <code className="bg-black/30 px-1 rounded">/admin/</code> */}
+            To add new news articles, create JSON files in the <code className="bg-black/30 px-1 rounded">public/content/news/</code> folder 
+            or use the CMS admin interface at <code className="bg-black/30 px-1 rounded">/admin/</code>
           </p>
         </div>
       </div>
