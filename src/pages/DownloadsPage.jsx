@@ -57,7 +57,7 @@ const DownloadsPage = () => {
       description: "Complete fee structure for the academic year 2024-25 including all charges and payment schedules.",
       category: "Fee Structure",
       academic_year: "2024-25",
-      file_size: "2.5 MB"
+      file_size: "766 KB"
     },
     {
       title: "School Newsletter - December 2024",
