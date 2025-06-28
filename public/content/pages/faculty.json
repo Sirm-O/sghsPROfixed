@@ -10,6 +10,7 @@
   "departments": [
     {
       "name": "Mathematics",
+      "photo": "/images/uploads/1.jpg",
       "description": "Developing analytical thinking and problem-solving skills through comprehensive mathematical education.",
       "hod": "Mr. Anthony Sammy Nzioki"
     },
