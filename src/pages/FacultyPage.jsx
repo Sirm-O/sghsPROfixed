@@ -101,7 +101,7 @@ const FacultyPage = () => {
       name: "Mr. Nguku Alex",
       position: "Head of Department",
       department: "Arts & Sports",
-      photo: "/images/uploads/1.jpg",
+      photo: "/images/uploads/nguku.jpg",
       email: "alex@senganigirlsschool.edu",
       phone: "+254 723265842",
       qualifications: "M.F.A., B.F.A.",
