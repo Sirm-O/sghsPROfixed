@@ -53,7 +53,7 @@ const DownloadsPage = () => {
     {
       title: "Fee Structure 2024-25",
       date: "2024-12-01T10:00:00",
-      file: "public/images/uploads/Opeations.pdf",
+      file: "/images/uploads/Opeations.pdf",
       description: "Complete fee structure for the academic year 2024-25 including all charges and payment schedules.",
       category: "Fee Structure",
       academic_year: "2024-25",
@@ -62,7 +62,7 @@ const DownloadsPage = () => {
     {
       title: "School Newsletter - December 2024",
       date: "2024-12-05T14:00:00",
-      file: "/downloads/friday-invigilation-shedule.pdf",
+      file: "/images/uploads/friday-invigilation-shedule.pdf",
       description: "Monthly newsletter featuring school events, achievements, and upcoming activities.",
       category: "Newsletters",
       academic_year: "2024-25",
