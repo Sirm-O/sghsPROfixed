@@ -26,112 +26,112 @@ const FacultyPage = () => {
   // FIXED: Sample faculty data with proper structure
   const facultyData = [
     {
-      name: "Dr. Priya Sharma",
+      name: "Dr. Margaret Mwendwa",
       position: "Principal",
       department: "Administration",
-      photo: "/images/uploads/principal.jpg",
+      photo: "/images/uploads/1.jpg",
       email: "principal@senganigirlsschool.edu",
-      phone: "+91 98765 43212",
+      phone: "+254 723 324518",
       qualifications: "Ph.D. in Education, M.Ed., B.Ed.",
       experience: "25 years",
       specialization: "Educational Leadership, Curriculum Development",
-      bio: "Dr. Priya Sharma has been leading Sengani Girls School with dedication and vision for over a decade. Her commitment to educational excellence and student welfare has transformed the institution into a center of academic and character development."
+      bio: "Dr. Margaret has been leading Sengani Girls School with dedication and vision for over a decade. Her commitment to educational excellence and student welfare has transformed the institution into a center of academic and character development."
     },
     {
-      name: "Mr. Rajesh Kumar",
+      name: "Mr. Sammy Anthony",
       position: "Head of Department",
       department: "Mathematics",
-      photo: "/images/uploads/rajesh-kumar.jpg",
-      email: "rajesh.kumar@senganigirlsschool.edu",
-      phone: "+91 98765 43213",
+      photo: "/images/uploads/1.jpg",
+      email: "sammya.edu",
+      phone: "+254 71234587",
       qualifications: "M.Sc. Mathematics, B.Ed.",
       experience: "15 years",
       specialization: "Advanced Mathematics, Problem Solving",
-      bio: "Mr. Rajesh Kumar brings innovative teaching methods to mathematics education, making complex concepts accessible and engaging for students."
+      bio: "Mr. Sammy brings innovative teaching methods to mathematics education, making complex concepts accessible and engaging for students."
     },
     {
-      name: "Dr. Meera Nair",
+      name: "Dr. Githinji Ndonye",
       position: "Head of Department",
       department: "Science",
-      photo: "/images/uploads/meera-nair.jpg",
-      email: "meera.nair@senganigirlsschool.edu",
-      phone: "+91 98765 43214",
-      qualifications: "Ph.D. in Physics, M.Sc. Physics, B.Ed.",
+      photo: "/images/uploads/1.jpg",
+      email: "githinji@senganigirlsschool.edu",
+      phone: "+254 7524585652",
+      qualifications: "Ph.D. in Physics, M.Sc. Chemistry, B.Ed.",
       experience: "18 years",
-      specialization: "Physics, Scientific Research Methods",
-      bio: "Dr. Meera Nair encourages scientific inquiry and hands-on learning, inspiring students to explore the wonders of science."
+      specialization: "Chemistry, Scientific Research Methods",
+      bio: "Dr. Githinji encourages scientific inquiry and hands-on learning, inspiring students to explore the wonders of science."
     },
     {
-      name: "Ms. Sunita Reddy",
+      name: "Ms. Faith",
       position: "Head of Department",
       department: "English",
-      photo: "/images/uploads/sunita-reddy.jpg",
-      email: "sunita.reddy@senganigirlsschool.edu",
-      phone: "+91 98765 43215",
+      photo: "/images/uploads/1.jpg",
+      email: "faith@senganigirlsschool.edu",
+      phone: "+254 725625689",
       qualifications: "M.A. English Literature, B.Ed.",
       experience: "12 years",
       specialization: "English Literature, Creative Writing",
-      bio: "Ms. Sunita Reddy fosters a love for language and literature, helping students develop strong communication skills."
+      bio: "Ms. Faith Reddy fosters a love for language and literature, helping students develop strong communication skills."
     },
     {
-      name: "Mrs. Kamala Devi",
+      name: "Mr. Onsarigo Bernard",
       position: "Head of Department",
-      department: "Tamil",
-      photo: "/images/uploads/kamala-devi.jpg",
-      email: "kamala.devi@senganigirlsschool.edu",
-      phone: "+91 98765 43216",
+      department: "Applied Sciences",
+      photo: "/images/uploads/1.jpg",
+      email: "onsa@senganigirlsschool.edu",
+      phone: "+254 21745256",
       qualifications: "M.A. Tamil Literature, B.Ed.",
       experience: "20 years",
-      specialization: "Tamil Literature, Cultural Studies",
-      bio: "Mrs. Kamala Devi preserves and promotes Tamil culture and language, connecting students with their rich heritage."
+      specialization: "Mathematics, Business Studies",
+      bio: "Mr. Onsarigo preserves and promotes Tamil culture and language, connecting students with their rich heritage."
     },
     {
-      name: "Mr. Arjun Patel",
+      name: "Mr. Mwenda Duncan",
       position: "Head of Department",
-      department: "Social Studies",
-      photo: "/images/uploads/arjun-patel.jpg",
-      email: "arjun.patel@senganigirlsschool.edu",
-      phone: "+91 98765 43217",
+      department: "Humanities",
+      photo: "/images/uploads/1.jpg",
+      email: "mwenda@senganigirlsschool.edu",
+      phone: "+254 725326485",
       qualifications: "M.A. History, B.Ed.",
       experience: "14 years",
       specialization: "History, Civics, Geography",
-      bio: "Mr. Arjun Patel brings history to life and helps students understand their role as responsible citizens."
+      bio: "Mr. Mwenda brings history to life and helps students understand their role as responsible citizens."
     },
     {
-      name: "Ms. Lakshmi Iyer",
+      name: "Mr. Nguku Alex",
       position: "Head of Department",
-      department: "Arts & Crafts",
-      photo: "/images/uploads/lakshmi-iyer.jpg",
-      email: "lakshmi.iyer@senganigirlsschool.edu",
-      phone: "+91 98765 43218",
+      department: "Arts & Sports",
+      photo: "/images/uploads/1.jpg",
+      email: "alex@senganigirlsschool.edu",
+      phone: "+254 723265842",
       qualifications: "M.F.A., B.F.A.",
       experience: "10 years",
-      specialization: "Visual Arts, Handicrafts",
-      bio: "Ms. Lakshmi Iyer nurtures creativity and artistic expression, helping students discover their artistic talents."
+      specialization: "Englis, Handicrafts",
+      bio: "Mr. Nguku nurtures creativity and artistic expression, helping students discover their artistic talents."
     },
     {
-      name: "Mrs. Deepa Krishnan",
-      position: "Teacher",
-      department: "Mathematics",
-      photo: "/images/uploads/deepa-krishnan.jpg",
-      email: "deepa.krishnan@senganigirlsschool.edu",
-      phone: "+91 98765 43219",
-      qualifications: "M.Sc. Mathematics, B.Ed.",
+      name: "Mrs. Margaret Maragia",
+      position: "Deputy Principal-Academics",
+      department: "Humanities",
+      photo: "/images/uploads/1.jpg",
+      email: "deepa.@senganigirlsschool.edu",
+      phone: "+254 7425625158",
+      qualifications: "M.Sc. Geography, B.Ed.",
       experience: "8 years",
-      specialization: "Algebra, Geometry",
-      bio: "Mrs. Deepa Krishnan makes mathematics enjoyable and helps students build strong foundational skills."
+      specialization: "Mathematics, Geometry",
+      bio: "Mrs. Maragia makes mathematics enjoyable and helps students build strong foundational skills."
     },
     {
-      name: "Dr. Ravi Shankar",
-      position: "Teacher",
+      name: "Dr. Sam Ochieng",
+      position: "HOD-Examinations",
       department: "Science",
-      photo: "/images/uploads/ravi-shankar.jpg",
-      email: "ravi.shankar@senganigirlsschool.edu",
-      phone: "+91 98765 43220",
+      photo: "/images/uploads/1.jpg",
+      email: "so@senganigirlsschool.edu",
+      phone: "+254 7525622",
       qualifications: "Ph.D. in Chemistry, M.Sc. Chemistry",
       experience: "16 years",
-      specialization: "Chemistry, Laboratory Techniques",
-      bio: "Dr. Ravi Shankar conducts engaging chemistry experiments that spark curiosity and scientific thinking."
+      specialization: "Physics, Mathematics",
+      bio: "Dr. Sam conducts engaging chemistry experiments that spark curiosity and scientific thinking."
     }
   ];
 
@@ -140,7 +140,7 @@ const FacultyPage = () => {
   const principal = pageContent?.principal || facultyData[0];
 
   // FIXED: Department filtering
-  const departments = ['All', 'Administration', 'Mathematics', 'Science', 'English', 'Tamil', 'Social Studies', 'Arts & Crafts'];
+  const departments = ['All', 'Administration', 'Mathematics', 'Science', 'English', 'Humanities', 'Applied Sciences', 'Arts & Sports'];
   
   const filteredFaculty = selectedDepartment === 'All' 
     ? faculty 
