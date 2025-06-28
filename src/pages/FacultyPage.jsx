@@ -1,127 +1,168 @@
-import React, { useState } from 'react';
-import { User, Mail, GraduationCap, BookOpen, Award, Phone, MapPin } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Users, Mail, Phone, Award, BookOpen, ChevronRight, X } from 'lucide-react';
 import useCMSContent from '../lib/useCMSContent';
 
 const FacultyPage = () => {
-  const { content: pageContent, loading: pageLoading } = useCMSContent('/content/pages/faculty.json');
-  const { content: facultyData, loading: facultyLoading } = useCMSContent('/content/faculty/');
+  const { content: pageContent, loading } = useCMSContent('/content/pages/faculty.json');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
+  const [selectedFaculty, setSelectedFaculty] = useState(null);
 
-  if (pageLoading) {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-400 mx-auto mb-4"></div>
+          <div className="loading-spinner h-12 w-12 mx-auto mb-4"></div>
           <p className="text-white">Loading faculty information...</p>
         </div>
       </div>
     );
   }
 
-  // Mock faculty data if CMS data isn't available
-  const mockFaculty = [
+  // FIXED: Sample faculty data with proper structure
+  const facultyData = [
     {
       name: "Dr. Priya Sharma",
       position: "Principal",
       department: "Administration",
-      photo: "/images/faculty/principal.jpg",
+      photo: "/images/uploads/principal.jpg",
+      email: "principal@senganigirlsschool.edu",
+      phone: "+91 98765 43212",
       qualifications: "Ph.D. in Education, M.Ed., B.Ed.",
       experience: "25 years",
-      email: "principal@senganigirlsschool.edu",
-      bio: "Dr. Priya Sharma brings over 25 years of educational leadership experience to Sengani Girls School."
-    },
-    {
-      name: "Mrs. Lakshmi Devi",
-      position: "Vice Principal",
-      department: "Administration",
-      qualifications: "M.Ed., B.Ed., M.A. English",
-      experience: "20 years",
-      email: "vp@senganigirlsschool.edu",
-      subjects: ["English", "Literature"]
+      specialization: "Educational Leadership, Curriculum Development",
+      bio: "Dr. Priya Sharma has been leading Sengani Girls School with dedication and vision for over a decade. Her commitment to educational excellence and student welfare has transformed the institution into a center of academic and character development."
     },
     {
       name: "Mr. Rajesh Kumar",
-      position: "Head of Mathematics Department",
+      position: "Head of Department",
       department: "Mathematics",
+      photo: "/images/uploads/rajesh-kumar.jpg",
+      email: "rajesh.kumar@senganigirlsschool.edu",
+      phone: "+91 98765 43213",
       qualifications: "M.Sc. Mathematics, B.Ed.",
       experience: "15 years",
-      subjects: ["Mathematics", "Statistics"]
+      specialization: "Advanced Mathematics, Problem Solving",
+      bio: "Mr. Rajesh Kumar brings innovative teaching methods to mathematics education, making complex concepts accessible and engaging for students."
     },
     {
       name: "Dr. Meera Nair",
-      position: "Science Teacher",
+      position: "Head of Department",
       department: "Science",
-      qualifications: "Ph.D. Chemistry, M.Sc., B.Ed.",
-      experience: "12 years",
-      subjects: ["Chemistry", "Physics"]
-    },
-    {
-      name: "Mrs. Kavitha Raman",
-      position: "Tamil Teacher",
-      department: "Tamil",
-      qualifications: "M.A. Tamil, B.Ed.",
+      photo: "/images/uploads/meera-nair.jpg",
+      email: "meera.nair@senganigirlsschool.edu",
+      phone: "+91 98765 43214",
+      qualifications: "Ph.D. in Physics, M.Sc. Physics, B.Ed.",
       experience: "18 years",
-      subjects: ["Tamil Literature", "Tamil Grammar"]
+      specialization: "Physics, Scientific Research Methods",
+      bio: "Dr. Meera Nair encourages scientific inquiry and hands-on learning, inspiring students to explore the wonders of science."
     },
     {
-      name: "Ms. Anitha Joseph",
-      position: "Physical Education Teacher",
-      department: "Physical Education",
-      qualifications: "M.P.Ed., B.P.Ed.",
+      name: "Ms. Sunita Reddy",
+      position: "Head of Department",
+      department: "English",
+      photo: "/images/uploads/sunita-reddy.jpg",
+      email: "sunita.reddy@senganigirlsschool.edu",
+      phone: "+91 98765 43215",
+      qualifications: "M.A. English Literature, B.Ed.",
+      experience: "12 years",
+      specialization: "English Literature, Creative Writing",
+      bio: "Ms. Sunita Reddy fosters a love for language and literature, helping students develop strong communication skills."
+    },
+    {
+      name: "Mrs. Kamala Devi",
+      position: "Head of Department",
+      department: "Tamil",
+      photo: "/images/uploads/kamala-devi.jpg",
+      email: "kamala.devi@senganigirlsschool.edu",
+      phone: "+91 98765 43216",
+      qualifications: "M.A. Tamil Literature, B.Ed.",
+      experience: "20 years",
+      specialization: "Tamil Literature, Cultural Studies",
+      bio: "Mrs. Kamala Devi preserves and promotes Tamil culture and language, connecting students with their rich heritage."
+    },
+    {
+      name: "Mr. Arjun Patel",
+      position: "Head of Department",
+      department: "Social Studies",
+      photo: "/images/uploads/arjun-patel.jpg",
+      email: "arjun.patel@senganigirlsschool.edu",
+      phone: "+91 98765 43217",
+      qualifications: "M.A. History, B.Ed.",
+      experience: "14 years",
+      specialization: "History, Civics, Geography",
+      bio: "Mr. Arjun Patel brings history to life and helps students understand their role as responsible citizens."
+    },
+    {
+      name: "Ms. Lakshmi Iyer",
+      position: "Head of Department",
+      department: "Arts & Crafts",
+      photo: "/images/uploads/lakshmi-iyer.jpg",
+      email: "lakshmi.iyer@senganigirlsschool.edu",
+      phone: "+91 98765 43218",
+      qualifications: "M.F.A., B.F.A.",
       experience: "10 years",
-      subjects: ["Physical Education", "Sports Training"]
+      specialization: "Visual Arts, Handicrafts",
+      bio: "Ms. Lakshmi Iyer nurtures creativity and artistic expression, helping students discover their artistic talents."
+    },
+    {
+      name: "Mrs. Deepa Krishnan",
+      position: "Teacher",
+      department: "Mathematics",
+      photo: "/images/uploads/deepa-krishnan.jpg",
+      email: "deepa.krishnan@senganigirlsschool.edu",
+      phone: "+91 98765 43219",
+      qualifications: "M.Sc. Mathematics, B.Ed.",
+      experience: "8 years",
+      specialization: "Algebra, Geometry",
+      bio: "Mrs. Deepa Krishnan makes mathematics enjoyable and helps students build strong foundational skills."
+    },
+    {
+      name: "Dr. Ravi Shankar",
+      position: "Teacher",
+      department: "Science",
+      photo: "/images/uploads/ravi-shankar.jpg",
+      email: "ravi.shankar@senganigirlsschool.edu",
+      phone: "+91 98765 43220",
+      qualifications: "Ph.D. in Chemistry, M.Sc. Chemistry",
+      experience: "16 years",
+      specialization: "Chemistry, Laboratory Techniques",
+      bio: "Dr. Ravi Shankar conducts engaging chemistry experiments that spark curiosity and scientific thinking."
     }
   ];
 
-  const faculty = facultyData || mockFaculty;
-  const departments = ['All', 'Administration', 'Mathematics', 'Science', 'English', 'Tamil', 'Hindi', 'Social Studies', 'Arts', 'Physical Education', 'Library', 'Support Staff'];
+  // Use faculty data from CMS or fallback to sample data
+  const faculty = pageContent?.faculty || facultyData;
+  const principal = pageContent?.principal || facultyData[0];
+
+  // FIXED: Department filtering
+  const departments = ['All', 'Administration', 'Mathematics', 'Science', 'English', 'Tamil', 'Social Studies', 'Arts & Crafts'];
   
   const filteredFaculty = selectedDepartment === 'All' 
     ? faculty 
     : faculty.filter(member => member.department === selectedDepartment);
 
-  // Default principal data
-  const defaultPrincipal = {
-    name: "Dr. Priya Sharma",
-    photo: "/images/faculty/principal.jpg",
-    message: "Welcome to Sengani Girls School. Our dedicated faculty and staff are committed to providing quality education and nurturing the potential of every student. We believe in creating an environment where young women can grow academically, socially, and personally.",
-    qualifications: "Ph.D. in Education, M.Ed., B.Ed."
+  // FIXED: Handle faculty member selection
+  const handleFacultyClick = (member) => {
+    setSelectedFaculty(member);
+    document.body.style.overflow = 'hidden';
   };
 
-  const principalData = pageContent?.principal || defaultPrincipal;
-
-  // Default departments
-  const defaultDepartments = [
-    {
-      name: "Mathematics",
-      description: "Developing analytical thinking and problem-solving skills through comprehensive mathematical education.",
-      hod: "Mr. Rajesh Kumar"
-    },
-    {
-      name: "Science",
-      description: "Fostering scientific inquiry and research through hands-on experiments and theoretical knowledge.",
-      hod: "Dr. Meera Nair"
-    },
-    {
-      name: "Languages",
-      description: "Enhancing communication skills through Tamil, English, and Hindi language instruction.",
-      hod: "Mrs. Lakshmi Devi"
-    },
-    {
-      name: "Social Studies",
-      description: "Building awareness of society, history, and global citizenship through comprehensive social education.",
-      hod: "Mrs. Sunitha Reddy"
-    }
-  ];
-
-  const departmentData = pageContent?.departments || defaultDepartments;
+  const handleCloseFaculty = () => {
+    setSelectedFaculty(null);
+    document.body.style.overflow = 'unset';
+  };
 
   return (
     <div className="section">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">
             {pageContent?.title || "Faculty & Staff"}
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -131,161 +172,106 @@ const FacultyPage = () => {
 
         {/* Principal's Message */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Principal's Message</h2>
-          <div className="card max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-              <div className="flex-shrink-0">
-                {principalData.photo ? (
+          <div className="card">
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-48 h-48 mx-auto mb-4 overflow-hidden rounded-full">
                   <img 
-                    src={principalData.photo} 
-                    alt={principalData.name}
-                    className="w-32 h-32 rounded-full object-cover border-4 border-yellow-400"
+                    src={principal.photo} 
+                    alt={principal.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(principal.name )}&size=200&background=6366f1&color=ffffff`;
+                    }}
                   />
-                ) : (
-                  <div className="w-32 h-32 bg-yellow-400/20 rounded-full flex items-center justify-center">
-                    <User className="w-16 h-16 text-yellow-400" />
-                  </div>
-                )}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">{principal.name}</h3>
+                <p className="text-yellow-400 mb-2">{principal.position}</p>
+                <p className="text-gray-300 text-sm">{principal.qualifications}</p>
               </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-2xl font-bold text-white mb-2">{principalData.name}</h3>
-                <p className="text-yellow-400 mb-2">Principal</p>
-                <p className="text-gray-400 text-sm mb-4">{principalData.qualifications}</p>
-                <blockquote className="text-gray-300 italic text-lg leading-relaxed">
-                  "{principalData.message}"
-                </blockquote>
+              
+              <div className="md:col-span-2">
+                <h2 className="text-2xl font-bold text-white mb-4">Principal's Message</h2>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  {principal.bio || "Welcome to Sengani Girls School. Our dedicated faculty and staff are committed to providing quality education and nurturing the potential of every student. We believe in creating an environment where young women can grow academically, socially, and personally."}
+                </p>
+                <div className="grid md:grid-cols-2 gap-4 text-sm">
+                  <div className="flex items-center text-gray-300">
+                    <Mail className="w-4 h-4 mr-2 text-yellow-400" />
+                    {principal.email}
+                  </div>
+                  <div className="flex items-center text-gray-300">
+                    <Phone className="w-4 h-4 mr-2 text-yellow-400" />
+                    {principal.phone}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Department Overview */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Our Departments</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {departmentData.map((dept, index) => (
-              <div key={index} className="card group hover:scale-105 transition-all duration-300">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-yellow-400/20 rounded-lg flex items-center justify-center mr-4">
-                    <BookOpen className="w-6 h-6 text-yellow-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">
-                      {dept.name}
-                    </h3>
-                    {dept.hod && (
-                      <p className="text-gray-400 text-sm">Head: {dept.hod}</p>
-                    )}
-                  </div>
-                </div>
-                <p className="text-gray-300 text-sm">
-                  {dept.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Department Filter */}
+        {/* Department Filter - FIXED */}
         <div className="mb-8">
           <div className="flex flex-wrap gap-2 justify-center">
-            {departments.map((department) => (
+            {departments.map((dept) => (
               <button
-                key={department}
-                onClick={() => setSelectedDepartment(department)}
+                key={dept}
+                onClick={() => setSelectedDepartment(dept)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedDepartment === department
+                  selectedDepartment === dept
                     ? 'bg-yellow-400 text-purple-900'
                     : 'bg-white/10 text-white hover:bg-white/20'
                 }`}
               >
-                {department}
+                {dept}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Faculty Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Faculty Grid - FIXED */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {filteredFaculty.map((member, index) => (
-            <div key={index} className="card group hover:scale-105 transition-all duration-300">
-              <div className="text-center mb-4">
-                {member.photo ? (
+            <div key={index} className="card hover-scale cursor-pointer" onClick={() => handleFacultyClick(member)}>
+              <div className="text-center">
+                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full">
                   <img 
                     src={member.photo} 
                     alt={member.name}
-                    className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-2 border-yellow-400/50"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name )}&size=128&background=6366f1&color=ffffff`;
+                    }}
                   />
-                ) : (
-                  <div className="w-24 h-24 bg-yellow-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <User className="w-12 h-12 text-yellow-400" />
+                </div>
+                
+                <h3 className="text-lg font-bold text-white mb-2">{member.name}</h3>
+                <p className="text-yellow-400 text-sm mb-1">{member.position}</p>
+                <p className="text-gray-300 text-sm mb-3">{member.department}</p>
+                
+                <div className="space-y-1 text-xs text-gray-400 mb-4">
+                  <div className="flex items-center justify-center">
+                    <Award className="w-3 h-3 mr-1" />
+                    {member.experience} experience
                   </div>
-                )}
-                <h3 className="text-lg font-bold text-white mb-1 group-hover:text-yellow-400 transition-colors">
-                  {member.name}
-                </h3>
-                <p className="text-yellow-400 text-sm mb-2">{member.position}</p>
-                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">
-                  {member.department}
-                </span>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <GraduationCap className="w-4 h-4 text-yellow-400 mr-2 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="text-gray-400 text-xs">Qualifications</p>
-                    <p className="text-gray-300 text-sm">{member.qualifications}</p>
+                  <div className="flex items-center justify-center">
+                    <BookOpen className="w-3 h-3 mr-1" />
+                    {member.specialization}
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <Award className="w-4 h-4 text-yellow-400 mr-2 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="text-gray-400 text-xs">Experience</p>
-                    <p className="text-gray-300 text-sm">{member.experience}</p>
-                  </div>
-                </div>
-
-                {member.subjects && member.subjects.length > 0 && (
-                  <div className="flex items-start">
-                    <BookOpen className="w-4 h-4 text-yellow-400 mr-2 mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-gray-400 text-xs">Subjects</p>
-                      <p className="text-gray-300 text-sm">{member.subjects.join(', ')}</p>
-                    </div>
-                  </div>
-                )}
-
-                {member.email && (
-                  <div className="flex items-center">
-                    <Mail className="w-4 h-4 text-yellow-400 mr-2 flex-shrink-0" />
-                    <a 
-                      href={`mailto:${member.email}`}
-                      className="text-yellow-400 hover:text-yellow-300 text-sm transition-colors"
-                    >
-                      {member.email}
-                    </a>
-                  </div>
-                )}
-
-                {member.bio && (
-                  <div className="pt-3 border-t border-white/10">
-                    <p className="text-gray-300 text-sm italic">
-                      {member.bio}
-                    </p>
-                  </div>
-                )}
+                <button className="text-yellow-400 hover:text-yellow-300 transition-colors text-sm flex items-center justify-center mx-auto">
+                  View Profile <ChevronRight className="w-4 h-4 ml-1" />
+                </button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* No Faculty Message */}
+        {/* No Faculty Message - FIXED */}
         {filteredFaculty.length === 0 && (
           <div className="text-center py-16">
             <div className="card max-w-md mx-auto">
-              <User className="w-16 h-16 text-gray-400 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-white mb-4">No Faculty Found</h3>
               <p className="text-gray-300 mb-6">
                 No faculty members found in the "{selectedDepartment}" department.
@@ -300,31 +286,129 @@ const FacultyPage = () => {
           </div>
         )}
 
-        {/* Contact Section */}
-        <div className="mt-16">
-          <div className="card max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-white mb-4">
-              Join Our Team
-            </h2>
-            <p className="text-gray-300 mb-6">
-              We're always looking for passionate educators to join our faculty. If you're interested in making a difference in students' lives, we'd love to hear from you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary">
-                <Mail className="w-4 h-4 mr-2" />
-                Career Opportunities
-              </button>
-              <button className="border border-yellow-400 text-yellow-400 px-6 py-2 rounded-lg hover:bg-yellow-400 hover:text-purple-900 transition-colors">
-                <Phone className="w-4 h-4 mr-2 inline" />
-                Contact HR
-              </button>
+        {/* Departments Overview */}
+        <div className="card">
+          <h2 className="text-2xl font-bold text-white mb-8 text-center">Our Departments</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pageContent?.departments?.map((dept, index) => (
+              <div key={index} className="p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+                <h3 className="text-lg font-semibold text-white mb-2">{dept.name}</h3>
+                <p className="text-gray-300 text-sm mb-3">{dept.description}</p>
+                <p className="text-yellow-400 text-sm">Head: {dept.hod}</p>
+              </div>
+            )) || (
+              // Fallback departments
+              <>
+                <div className="p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+                  <h3 className="text-lg font-semibold text-white mb-2">Mathematics</h3>
+                  <p className="text-gray-300 text-sm mb-3">Developing analytical thinking and problem-solving skills.</p>
+                  <p className="text-yellow-400 text-sm">Head: Mr. Rajesh Kumar</p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+                  <h3 className="text-lg font-semibold text-white mb-2">Science</h3>
+                  <p className="text-gray-300 text-sm mb-3">Fostering scientific inquiry and research.</p>
+                  <p className="text-yellow-400 text-sm">Head: Dr. Meera Nair</p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+                  <h3 className="text-lg font-semibold text-white mb-2">English</h3>
+                  <p className="text-gray-300 text-sm mb-3">Enhancing communication and literary skills.</p>
+                  <p className="text-yellow-400 text-sm">Head: Ms. Sunita Reddy</p>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Instructions */}
+        <div className="mt-8 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+          <h4 className="text-blue-400 font-semibold mb-2">👥 How to Update Faculty Information</h4>
+          <p className="text-gray-300 text-sm">
+            To update faculty information, edit the <code className="bg-black/30 px-1 rounded">public/content/pages/faculty.json</code> file 
+            or use the CMS admin interface at <code className="bg-black/30 px-1 rounded">/admin/</code>
+          </p>
+        </div>
+      </div>
+
+      {/* FIXED: Faculty Details Modal */}
+      {selectedFaculty && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-gradient-to-br from-purple-900/90 to-blue-900/90 backdrop-blur-md border border-white/20 rounded-xl max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              {/* Close Button */}
+              <div className="flex justify-end mb-4">
+                <button 
+                  onClick={handleCloseFaculty}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Faculty Details */}
+              <div className="text-center mb-6">
+                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full">
+                  <img 
+                    src={selectedFaculty.photo} 
+                    alt={selectedFaculty.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(selectedFaculty.name )}&size=128&background=6366f1&color=ffffff`;
+                    }}
+                  />
+                </div>
+                <h1 className="text-2xl font-bold text-white mb-2">{selectedFaculty.name}</h1>
+                <p className="text-yellow-400 mb-1">{selectedFaculty.position}</p>
+                <p className="text-gray-300">{selectedFaculty.department}</p>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                <div>
+                  <h3 className="text-white font-semibold mb-2">Qualifications</h3>
+                  <p className="text-gray-300">{selectedFaculty.qualifications}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-white font-semibold mb-2">Experience</h3>
+                  <p className="text-gray-300">{selectedFaculty.experience}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-white font-semibold mb-2">Specialization</h3>
+                  <p className="text-gray-300">{selectedFaculty.specialization}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-white font-semibold mb-2">About</h3>
+                  <p className="text-gray-300 leading-relaxed">{selectedFaculty.bio}</p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4 mb-6">
+                <div className="flex items-center text-gray-300">
+                  <Mail className="w-4 h-4 mr-2 text-yellow-400" />
+                  <span className="text-sm">{selectedFaculty.email}</span>
+                </div>
+                <div className="flex items-center text-gray-300">
+                  <Phone className="w-4 h-4 mr-2 text-yellow-400" />
+                  <span className="text-sm">{selectedFaculty.phone}</span>
+                </div>
+              </div>
+
+              {/* Close Button at Bottom */}
+              <div className="text-center">
+                <button 
+                  onClick={handleCloseFaculty}
+                  className="btn-primary"
+                >
+                  Close Profile
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
 
 export default FacultyPage;
-
