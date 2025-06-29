@@ -41,7 +41,7 @@ const HomePage = () => {
       <div className="container mx-auto px-4 text-center mb-20">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient">
-            {pageContent?.title || "AIC SENGANI GIRLS SCHOOL Empowering young women through quality education and holistic development"}
+            {pageContent?.title || "SENGANI GIRLS SCHOOL"}
           </h1>
           
           {/* FIXED: Learn More Button */}
